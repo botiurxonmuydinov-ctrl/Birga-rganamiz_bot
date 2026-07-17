@@ -1,7 +1,5 @@
 <?php
 
-require_once "../config.php";
-
 function sendMessage($chat_id, $text, $keyboard = null)
 {
     $data = [
@@ -10,7 +8,7 @@ function sendMessage($chat_id, $text, $keyboard = null)
         "parse_mode" => "HTML"
     ];
 
-    if ($keyboard) {
+    if ($keyboard != null) {
         $data["reply_markup"] = json_encode($keyboard);
     }
 
@@ -36,11 +34,12 @@ $keyboard = [
             ["text" => "👥 Jamoa"]
         ]
     ],
-    "resize_keyboard" => true
+    "resize_keyboard" => true,
+    "one_time_keyboard" => false
 ];
 
 sendMessage(
     $chat_id,
-    "🇰🇷 Koreys tili botiga xush kelibsiz!\n\nKerakli bo'limni tanlang.",
+    "🇰🇷 <b>Koreys tilini o'rganish botiga xush kelibsiz!</b>\n\nQuyidagi menyudan kerakli bo'limni tanlang.",
     $keyboard
 );
